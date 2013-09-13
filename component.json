@@ -1,0 +1,27 @@
+{
+  "name": "flowcopter",
+  "description": "NoFlo and NodeCopter example",
+  "author": "Henri Bergius <henri.bergius@iki.fi>",
+  "repo": "bergie/flowcopter",
+  "version": "0.1.0",
+  "keywords": [
+  ],
+  "dependencies": {
+    "noflo/noflo": "*",
+    "noflo/noflo-strings": "*",
+    "noflo/noflo-objects": "*",
+    "woodworker/noflo-interaction": "*",
+    "noflo/noflo-math": "*",
+    "noflo/noflo-websocket": "*"
+  },
+  "scripts": [
+    "index.js"
+  ],
+  "json": [
+    "component.json"
+  ],
+  "noflo": {
+    "components": {
+    }
+  }
+}
