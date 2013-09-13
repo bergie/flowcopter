@@ -1,0 +1,18 @@
+EXPORT=DISC.IN:COMMAND
+
+Disc(core/DisconnectAfterPacket) OUT -> IN SplitCommands(objects/SplitObject)
+SplitCommands(objects/SplitObject) OUT -> IN CommandRouter(routers/GroupRouter)
+
+# Connect to drone and pass the connection to the commands
+'' -> IP Connect(ardrone/Connect)
+Connect() CLIENT -> IN Drone(core/Split)
+Drone() OUT -> STRING DoTakeoff(strings/SendString) OUT -> CLIENT Takeoff(ardrone/Takeoff)
+Drone() OUT -> STRING DoLand(strings/SendString) OUT -> CLIENT Land(ardrone/Land)
+
+# Route commands
+'takeoff' -> ROUTE CommandRouter()
+'land' -> ROUTE CommandRouter()
+CommandRouter() OUT -> IN DoTakeoff()
+CommandRouter() OUT -> IN DoLand()
+
+CommandRouter() MISSED -> IN Show(core/Output)

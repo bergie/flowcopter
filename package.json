@@ -18,6 +18,7 @@
   ],
   "noflo": {
     "graphs": {
+      "RouteCommands": "./graphs/RouteCommands.fbp",
       "SocketServer": "./graphs/SocketServer.fbp"
     }
   },
@@ -27,7 +28,9 @@
     "noflo-websocket": "~0.1.0",
     "noflo-ardrone": "~0.1.0",
     "noflo-strings": "~0.1.2",
-    "noflo-core": "~0.1.1"
+    "noflo-core": "~0.1.2",
+    "noflo-routers": "~0.1.1",
+    "noflo-objects": "~0.1.3"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
