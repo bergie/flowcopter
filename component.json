@@ -16,6 +16,7 @@
     "noflo/noflo-websocket": "*"
   },
   "scripts": [
+    "components/GamepadButton.coffee",
     "index.js"
   ],
   "json": [
@@ -23,6 +24,7 @@
   ],
   "noflo": {
     "components": {
+      "GamepadButton": "components/GamepadButton.coffee"
     }
   }
 }
