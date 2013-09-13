@@ -16,11 +16,18 @@
       "url": "undefined/blob/master/LICENSE-MIT"
     }
   ],
+  "noflo": {
+    "graphs": {
+      "SocketServer": "./graphs/SocketServer.fbp"
+    }
+  },
   "dependencies": {
     "noflo": "~0.4.0",
     "noflo-webserver": "0.0.3",
     "noflo-websocket": "~0.1.0",
-    "noflo-ardrone": "~0.1.0"
+    "noflo-ardrone": "~0.1.0",
+    "noflo-strings": "~0.1.2",
+    "noflo-core": "~0.1.1"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

@@ -1,0 +1,2 @@
+'8000' -> PORT Server(flowcopter/SocketServer)
+Server() MESSAGE -> IN Show(core/Output)

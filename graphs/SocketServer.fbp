@@ -1,0 +1,7 @@
+EXPORT=WEB.LISTEN:PORT
+EXPORT=PARSE.OUT:MESSAGE
+'flowcopter' -> PROTOCOL Socket(websocket/ListenConnections)
+Web(webserver/Server) SERVER -> SERVER Socket()
+Web() REQUEST -> IN DropRequests(core/Drop)
+Socket() CONNECTION -> CONNECTION Message(websocket/ListenMessages)
+Message() STRING -> IN Parse(strings/ParseJson)
