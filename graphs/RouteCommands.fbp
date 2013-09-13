@@ -8,11 +8,17 @@ SplitCommands(objects/SplitObject) OUT -> IN CommandRouter(routers/GroupRouter)
 Connect() CLIENT -> IN Drone(core/Split)
 Drone() OUT -> STRING DoTakeoff(strings/SendString) OUT -> CLIENT Takeoff(ardrone/Takeoff)
 Drone() OUT -> STRING DoLand(strings/SendString) OUT -> CLIENT Land(ardrone/Land)
+Drone() OUT -> STRING DoStop(strings/SendString) OUT -> CLIENT Stop(ardrone/Stop)
+Drone() OUT -> CLIENT Forward(ardrone/MoveForward)
 
 # Route commands
 'takeoff' -> ROUTE CommandRouter()
 'land' -> ROUTE CommandRouter()
+'stop' -> ROUTE CommandRouter()
+'forward' -> ROUTE CommandRouter()
 CommandRouter() OUT -> IN DoTakeoff()
 CommandRouter() OUT -> IN DoLand()
+CommandRouter() OUT -> IN DoStop()
+CommandRouter() OUT -> SPEED Forward()
 
 CommandRouter() MISSED -> IN Show(core/Output)
