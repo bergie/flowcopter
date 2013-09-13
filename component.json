@@ -8,6 +8,7 @@
   ],
   "dependencies": {
     "noflo/noflo": "*",
+    "noflo/noflo-core": "*",
     "noflo/noflo-strings": "*",
     "noflo/noflo-objects": "*",
     "woodworker/noflo-interaction": "*",
