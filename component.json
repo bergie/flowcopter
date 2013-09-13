@@ -17,6 +17,7 @@
   },
   "scripts": [
     "components/GamepadButton.coffee",
+    "components/WireCommand.coffee",
     "index.js"
   ],
   "json": [
@@ -24,7 +25,8 @@
   ],
   "noflo": {
     "components": {
-      "GamepadButton": "components/GamepadButton.coffee"
+      "GamepadButton": "components/GamepadButton.coffee",
+      "WireCommand": "components/WireCommand.coffee"
     }
   }
 }

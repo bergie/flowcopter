@@ -19,10 +19,20 @@ ReadAxes() OUT -> IN GetAxes(core/Split) OUT -> IN Drop(core/Drop)
 ReadButtons() OUT -> IN GetButtons(core/Split)
 
 ###
-# Start Command
+# takeoff Command
+'takeoff' -> NAME TakeOffCommand(flowcopter/WireCommand)
 '9' -> BUTTON GetStartButton(flowcopter/GamepadButton)
 GetButtons() OUT -> IN GetStartButton()
-GetStartButton() OUT -> IN Show(core/Output)
+GetStartButton() OUT -> VALUE TakeOffCommand()
+TakeOffCommand OUT -> IN Show(core/Output)
+
+###
+# land Command
+'land' -> NAME LandCommand(flowcopter/WireCommand)
+'8' -> BUTTON GetBackButton(flowcopter/GamepadButton)
+GetButtons() OUT -> IN GetBackButton()
+GetBackButton() OUT -> VALUE LandCommand()
+LandCommand OUT -> IN Show(core/Output)
 
 </script>
     <script>
