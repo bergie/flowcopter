@@ -15,17 +15,36 @@
     </div>
     
     <div style="position: relative; margin-top: 20px;">
-      <input type="number" name="value">
+      <input type="number" name="value" id="value">
     </div>  
   </body>
   <script src="../browser/flowcopter.js"></script>
   <script type="application/fbp">
+# WebSocket communications
 'flowcopter' -> PROTOCOL Connect(websocket/Connect)
 'ws://localhost:8000' -> URL Connect()
 Connect() CONNECTION -> CONNECTION Send(websocket/SendMessage)
 Connect() ERROR -> IN Show(core/Output)
-Messages(core/Merge) OUT -> IN Stringify(strings/Jsonify)
+Messages(core/Merge) OUT -> IN ShowMsg(core/Output) OUT -> IN Stringify(strings/Jsonify)
 Stringify() OUT -> STRING Send()
+
+# DOM handling
+'button' -> SELECTOR GetButtons(dom/GetElement)
+GetButtons() ELEMENT -> ELEMENT ListenMouse(interaction/ListenMouse)
+'id' -> ATTRIBUTE GetAction(dom/GetAttribute)
+'target' -> KEY GetClicked(objects/GetObjectKey)
+ListenMouse() CLICK -> IN GetClicked() OUT -> ELEMENT GetAction()
+GetAction() OUT -> IN SplitAction(core/Split)
+
+# Create command
+SplitAction() OUT -> PROPERTY SetCommand(objects/SetPropertyValue)
+'#value' -> SELECTOR GetValueElement(dom/GetElement) ELEMENT -> DATA ValueElement(Kick)
+'value' -> KEY ReadValue(objects/GetObjectKey)
+ValueElement() OUT -> IN ReadValue() OUT -> VALUE SetCommand()
+SplitAction() OUT -> IN ValueElement()
+SplitAction() OUT -> START CreateCommand(objects/CreateObject)
+CreateCommand() OUT -> IN Disc(core/DisconnectAfterPacket) OUT -> IN SetCommand(objects/SetPropertyValue)
+SetCommand() OUT -> IN Messages()
   </script>
   <script>
     var noflo = require('noflo');
@@ -33,22 +52,7 @@ Stringify() OUT -> STRING Send()
     var fbpString = fbp.innerText.trim();
     noflo.graph.loadFBP(fbpString, function (graph) {
       graph.baseDir = '/flowcopter';
-      noflo.createNetwork(graph, function (network) {
-        var button = document.querySelector('#send');
-        var messages = network.getNode('Messages');
-        var socket = noflo.internalSocket.createSocket();
-        messages.component.inPorts['in'].attach(socket);
-
-        button.onclick = function (event) {
-          event.preventDefault();
-
-          var method = document.forms[0].elements[0].value;
-          var value = document.forms[0].elements[1].value;
-          var msg = {}
-          msg[method] = value;
-          socket.send(msg);
-        };
-      });
+      noflo.createNetwork(graph);
     });
   </script>
 </html>
