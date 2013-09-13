@@ -13,6 +13,7 @@ class GamepadAxis extends noflo.Component
       out: new noflo.Port
 
     @axisIndex
+    @lastAxisValue
     @inverted = false
 
     @inPorts.axis.on "data", (data) =>
@@ -27,6 +28,10 @@ class GamepadAxis extends noflo.Component
     @inPorts.in.on "data", (data) =>
       unless @axisIndex is null
         value = data[@axisIndex]
+        if value == @lastAxisValue
+          return
+
+        @lastAxisValue = value
         if @inverted == false and value >= 0
           @outPorts.out.send value
         else if @inverted == true and value <= 0

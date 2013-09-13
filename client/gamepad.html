@@ -50,6 +50,22 @@ GetAxes() OUT -> IN GetForwardAxis()
 GetForwardAxis() OUT -> VALUE ForwardCommand()
 ForwardCommand OUT -> IN MergeCommands()
 
+###
+# back Command
+'back' -> NAME BackCommand(flowcopter/WireCommand)
+'3' -> AXIS GetBackAxis(flowcopter/GamepadAxis)
+GetAxes() OUT -> IN GetBackAxis()
+GetBackAxis() OUT -> VALUE BackCommand()
+BackCommand OUT -> IN MergeCommands()
+
+###
+# stop Command
+'stop' -> NAME StopCommand(flowcopter/WireCommand)
+'1' -> BUTTON GetStopButton(flowcopter/GamepadButton)
+GetButtons() OUT -> IN GetStopButton()
+GetStopButton() OUT -> VALUE StopCommand()
+StopCommand OUT -> IN MergeCommands(core/Merge)
+
 MergeCommands() OUT -> IN Show(core/Output) OUT -> IN Stringify(strings/Jsonify)
 Stringify() OUT -> STRING Send()
 </script>
