@@ -4,19 +4,19 @@
     <title>WebSocket example with NoFlo</title>
   </head>
   <body>
-    <form>
-      <select name="method">
-        <option value="takeoff">Take off</option>
-        <option value="land">Land</option>
-        <option value="stop">Stop</option>
-        <option value="forward">Forward</option>
-        <option value="back">Back</option>
-        <option value="right">Right</option>
-        <option value="left">Left</option>
-      </select>
+    <div style="position: relative; margin-top: 20px;">
+      <button id="takeoff">Take off</button>
+      <button id="land">Land</button>
+      <button id="stop">Stop</button>
+      <button id="forward">Forward</button>
+      <button id="back">Back</button>
+      <button id="right">Right</button>
+      <button id="left">Left</button>
+    </div>
+    
+    <div style="position: relative; margin-top: 20px;">
       <input type="number" name="value">
-      <button id="send">Send</button>
-    </form>
+    </div>  
   </body>
   <script src="../browser/flowcopter.js"></script>
   <script type="application/fbp">
