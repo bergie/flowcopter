@@ -22,7 +22,7 @@ SendString(strings/SendString) OUT -> GAMEPAD ReadGamepad(interaction/ReadGamepa
 ReadGamepad() OUT -> IN GamepadData(core/Split)
 GamepadData() OUT -> IN ReadAxes()
 GamepadData() OUT -> IN ReadButtons()
-ReadAxes() OUT -> IN GetAxes(core/Split) OUT -> IN Drop(core/Drop)
+ReadAxes() OUT -> IN GetAxes(core/Split)
 ReadButtons() OUT -> IN GetButtons(core/Split)
 
 ###
@@ -40,6 +40,48 @@ TakeOffCommand OUT -> IN MergeCommands(core/Merge)
 GetButtons() OUT -> IN GetBackButton()
 GetBackButton() OUT -> VALUE LandCommand()
 LandCommand OUT -> IN MergeCommands()
+
+###
+# forward Command
+'forward' -> NAME ForwardCommand(flowcopter/WireCommand)
+'3' -> AXIS GetForwardAxis(flowcopter/GamepadAxis)
+'1' -> INVERTED GetForwardAxis()
+GetAxes() OUT -> IN GetForwardAxis()
+GetForwardAxis() OUT -> VALUE ForwardCommand()
+ForwardCommand OUT -> IN MergeCommands()
+
+###
+# back Command
+'back' -> NAME BackCommand(flowcopter/WireCommand)
+'3' -> AXIS GetBackAxis(flowcopter/GamepadAxis)
+GetAxes() OUT -> IN GetBackAxis()
+GetBackAxis() OUT -> VALUE BackCommand()
+BackCommand OUT -> IN MergeCommands()
+
+###
+# stop Command
+'stop' -> NAME StopCommand(flowcopter/WireCommand)
+'1' -> BUTTON GetStopButton(flowcopter/GamepadButton)
+GetButtons() OUT -> IN GetStopButton()
+GetStopButton() OUT -> VALUE StopCommand()
+StopCommand OUT -> IN MergeCommands(core/Merge)
+
+###
+# left Command
+'left' -> NAME LeftCommand(flowcopter/WireCommand)
+'2' -> AXIS GetLeftAxis(flowcopter/GamepadAxis)
+'1' -> INVERTED GetLeftAxis()
+GetAxes() OUT -> IN GetLeftAxis()
+GetLeftAxis() OUT -> VALUE LeftCommand()
+LeftCommand OUT -> IN MergeCommands()
+
+###
+# left Command
+'right' -> NAME RightCommand(flowcopter/WireCommand)
+'2' -> AXIS GetRightAxis(flowcopter/GamepadAxis)
+GetAxes() OUT -> IN GetRightAxis()
+GetRightAxis() OUT -> VALUE RightCommand()
+RightCommand OUT -> IN MergeCommands()
 
 MergeCommands() OUT -> IN Show(core/Output) OUT -> IN Stringify(strings/Jsonify)
 Stringify() OUT -> STRING Send()
