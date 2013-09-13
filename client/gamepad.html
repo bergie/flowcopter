@@ -5,6 +5,13 @@
     <script src="../browser/flowcopter.js"></script>
     <script type="application/fbp">
 ###
+# WebSocket connection
+'flowcopter' -> PROTOCOL Connect(websocket/Connect)
+'ws://localhost:8000' -> URL Connect()
+Connect() CONNECTION -> CONNECTION Send(websocket/SendMessage)
+Connect() ERROR -> IN Show(core/Output)
+
+###
 # MainData Graph
 '0' -> STRING SendString(strings/SendString)
 '20' -> INTERVAL RunInterval(core/RunInterval)
@@ -19,11 +26,23 @@ ReadAxes() OUT -> IN GetAxes(core/Split) OUT -> IN Drop(core/Drop)
 ReadButtons() OUT -> IN GetButtons(core/Split)
 
 ###
-# Start Command
+# takeoff Command
+'takeoff' -> NAME TakeOffCommand(flowcopter/WireCommand)
 '9' -> BUTTON GetStartButton(flowcopter/GamepadButton)
 GetButtons() OUT -> IN GetStartButton()
-GetStartButton() OUT -> IN Show(core/Output)
+GetStartButton() OUT -> VALUE TakeOffCommand()
+TakeOffCommand OUT -> IN MergeCommands(core/Merge)
 
+###
+# land Command
+'land' -> NAME LandCommand(flowcopter/WireCommand)
+'8' -> BUTTON GetBackButton(flowcopter/GamepadButton)
+GetButtons() OUT -> IN GetBackButton()
+GetBackButton() OUT -> VALUE LandCommand()
+LandCommand OUT -> IN MergeCommands()
+
+MergeCommands() OUT -> IN Show(core/Output) OUT -> IN Stringify(strings/Jsonify)
+Stringify() OUT -> STRING Send()
 </script>
     <script>
       var noflo = require('noflo');

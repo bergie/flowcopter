@@ -19,6 +19,6 @@ class GamepadButton extends noflo.Component
     @inPorts.in.on "data", (data) =>
       unless @buttonIndex is null
         if data[@buttonIndex] == 1
-          @outPorts.out.send data
+          @outPorts.out.send 1
 
 exports.getComponent = -> new GamepadButton
