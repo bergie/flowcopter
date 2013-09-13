@@ -17,6 +17,7 @@
   },
   "scripts": [
     "components/GamepadButton.coffee",
+    "components/GamepadAxis.coffee",
     "components/WireCommand.coffee",
     "index.js"
   ],
@@ -26,6 +27,7 @@
   "noflo": {
     "components": {
       "GamepadButton": "components/GamepadButton.coffee",
+      "GamepadAxis": "components/GamepadAxis.coffee",
       "WireCommand": "components/WireCommand.coffee"
     }
   }
