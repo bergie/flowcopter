@@ -83,6 +83,22 @@ GetAxes() OUT -> IN GetRightAxis()
 GetRightAxis() OUT -> VALUE RightCommand()
 RightCommand OUT -> IN MergeCommands()
 
+###
+# counterclockwise Command
+'counterclockwise' -> NAME CounterClockCommand(flowcopter/WireCommand)
+'6' -> AXIS GetShouldButtonLeftAsAxis(flowcopter/GamepadAxis)
+GetButtons() OUT -> IN GetShouldButtonLeftAsAxis()
+GetShouldButtonLeftAsAxis() OUT -> VALUE CounterClockCommand()
+CounterClockCommand OUT -> IN MergeCommands()
+
+###
+# counterclockwise Command
+'clockwise' -> NAME ClockCommand(flowcopter/WireCommand)
+'7' -> AXIS GetShouldButtonRightAsAxis(flowcopter/GamepadAxis)
+GetButtons() OUT -> IN GetShouldButtonRightAsAxis()
+GetShouldButtonRightAsAxis() OUT -> VALUE ClockCommand()
+ClockCommand OUT -> IN MergeCommands()
+
 MergeCommands() OUT -> IN Show(core/Output) OUT -> IN Stringify(strings/Jsonify)
 Stringify() OUT -> STRING Send()
 </script>
