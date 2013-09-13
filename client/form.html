@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WebSocket example with NoFlo</title>
+  </head>
+  <body>
+    <form>
+      <select name="method">
+        <option value="takeoff">Take off</option>
+        <option value="land">Land</option>
+      </select>
+      <input type="number" name="value">
+      <button id="send">Send</button>
+    </form>
+  </body>
+  <script src="../browser/flowcopter.js"></script>
+  <script type="application/fbp">
+'test' -> PROTOCOL Connect(websocket/Connect)
+'ws://localhost:8000' -> URL Connect()
+Connect() CONNECTION -> CONNECTION Send(websocket/SendMessage)
+'Hello, world' -> STRING Send()
+  </script>
+  <script>
+    var noflo = require('noflo');
+    var fbp = document.querySelector('script[type="application/fbp"]');
+    var fbpString = fbp.innerText.trim();
+    noflo.graph.loadFBP(fbpString, function (graph) {
+      graph.baseDir = '/flowcopter';
+      noflo.createNetwork(graph);
+    });
+  </script>
+</html>
