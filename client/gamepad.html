@@ -66,6 +66,23 @@ GetButtons() OUT -> IN GetStopButton()
 GetStopButton() OUT -> VALUE StopCommand()
 StopCommand OUT -> IN MergeCommands(core/Merge)
 
+###
+# left Command
+'left' -> NAME LeftCommand(flowcopter/WireCommand)
+'2' -> AXIS GetLeftAxis(flowcopter/GamepadAxis)
+'1' -> INVERTED GetLeftAxis()
+GetAxes() OUT -> IN GetLeftAxis()
+GetLeftAxis() OUT -> VALUE LeftCommand()
+LeftCommand OUT -> IN MergeCommands()
+
+###
+# left Command
+'right' -> NAME RightCommand(flowcopter/WireCommand)
+'2' -> AXIS GetRightAxis(flowcopter/GamepadAxis)
+GetAxes() OUT -> IN GetRightAxis()
+GetRightAxis() OUT -> VALUE RightCommand()
+RightCommand OUT -> IN MergeCommands()
+
 MergeCommands() OUT -> IN Show(core/Output) OUT -> IN Stringify(strings/Jsonify)
 Stringify() OUT -> STRING Send()
 </script>
