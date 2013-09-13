@@ -15,10 +15,12 @@
   </body>
   <script src="../browser/flowcopter.js"></script>
   <script type="application/fbp">
-'test' -> PROTOCOL Connect(websocket/Connect)
+'flowcopter' -> PROTOCOL Connect(websocket/Connect)
 'ws://localhost:8000' -> URL Connect()
 Connect() CONNECTION -> CONNECTION Send(websocket/SendMessage)
-'Hello, world' -> STRING Send()
+Connect() ERROR -> IN Show(core/Output)
+Messages(core/Merge) OUT -> IN Stringify(strings/Jsonify)
+Stringify() OUT -> STRING Send()
   </script>
   <script>
     var noflo = require('noflo');
@@ -26,7 +28,22 @@ Connect() CONNECTION -> CONNECTION Send(websocket/SendMessage)
     var fbpString = fbp.innerText.trim();
     noflo.graph.loadFBP(fbpString, function (graph) {
       graph.baseDir = '/flowcopter';
-      noflo.createNetwork(graph);
+      noflo.createNetwork(graph, function (network) {
+        var button = document.querySelector('#send');
+        var messages = network.getNode('Messages');
+        var socket = noflo.internalSocket.createSocket();
+        messages.component.inPorts['in'].attach(socket);
+
+        button.onclick = function (event) {
+          event.preventDefault();
+
+          var method = document.forms[0].elements[0].value;
+          var value = document.forms[0].elements[1].value;
+          var msg = {}
+          msg[method] = value;
+          socket.send(msg);
+        };
+      });
     });
   </script>
 </html>
