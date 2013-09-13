@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gamepad Demo</title>
+    <script src="../browser/flowcopter.js"></script>
+    <script type="application/fbp">
+###
+# MainData Graph
+'0' -> STRING SendString(strings/SendString)
+'20' -> INTERVAL RunInterval(core/RunInterval)
+'axes' -> KEY ReadAxes(objects/ExtractProperty)
+'buttons' -> KEY ReadButtons(objects/ExtractProperty)
+RunInterval() OUT -> IN SendString(strings/SendString)
+SendString(strings/SendString) OUT -> GAMEPAD ReadGamepad(interaction/ReadGamepad)
+ReadGamepad() OUT -> IN GamepadData(core/Split)
+GamepadData() OUT -> IN ReadAxes()
+GamepadData() OUT -> IN ReadButtons()
+ReadAxes() OUT -> IN GetAxes(core/Split) OUT -> IN Drop(core/Drop)
+ReadButtons() OUT -> IN GetButtons(core/Split)
+
+###
+# Start Command
+'9' -> BUTTON GetStartButton(flowcopter/GamepadButton)
+GetButtons() OUT -> IN GetStartButton()
+GetStartButton() OUT -> IN Show(core/Output)
+
+</script>
+    <script>
+      var noflo = require('noflo');
+      var fbp = document.querySelector('script[type="application/fbp"]');
+      var fbpString = fbp.innerText.trim();
+      noflo.graph.loadFBP(fbpString, function (graph) {
+        graph.baseDir = '/flowcopter';
+        noflo.createNetwork(graph);
+      });
+    </script>
+  </head>
+  <body>
+
+
+  </body>
+</html>
