@@ -1,7 +1,10 @@
 EXPORT=WEB.LISTEN:PORT
 EXPORT=PARSE.OUT:MESSAGE
+EXPORT=REPEATCONNECTION.OUT:CONNECTION
 'flowcopter' -> PROTOCOL Socket(websocket/ListenConnections)
 Web(webserver/Server) SERVER -> SERVER Socket()
 Web() REQUEST -> IN DropRequests(core/Drop)
-Socket() CONNECTION -> CONNECTION Message(websocket/ListenMessages)
+Socket() CONNECTION -> IN SplitConnection(core/Split)
+SplitConnection OUT -> CONNECTION Message(websocket/ListenMessages)
+SplitConnection OUT -> IN RepeatConnection(core/Repeat)
 Message() STRING -> IN Parse(strings/ParseJson)

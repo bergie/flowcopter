@@ -23,7 +23,7 @@
     }
   },
   "dependencies": {
-    "noflo": "~0.4.0",
+    "noflo": "~0.4.1",
     "noflo-webserver": "0.0.3",
     "noflo-websocket": "~0.1.0",
     "noflo-ardrone": "~0.1.3",

@@ -36,10 +36,16 @@
 # WebSocket communications
 'flowcopter' -> PROTOCOL Connect(websocket/Connect)
 'ws://localhost:8000' -> URL Connect()
-Connect() CONNECTION -> CONNECTION Send(websocket/SendMessage)
+Connect() CONNECTION -> IN SplitConnection(core/Split)
+SplitConnection OUT -> CONNECTION Send(websocket/SendMessage)
 Connect() ERROR -> IN Show(core/Output)
 Messages(core/Merge) OUT -> IN ShowMsg(core/Output) OUT -> IN Stringify(strings/Jsonify)
 Stringify() OUT -> STRING Send()
+
+# Listening to telemetry data from Drone
+SplitConnection OUT -> CONNECTION Listen(websocket/ListenMessages)
+Listen STRING -> IN Parse(strings/ParseJson)
+Parse OUT -> IN Show
 
 # DOM handling
 'button' -> SELECTOR GetButtons(dom/GetElement)

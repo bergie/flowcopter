@@ -1,2 +1,10 @@
+# Listen to HTTP and WebSocket traffic
 '8000' -> PORT Server(flowcopter/SocketServer)
-Server() MESSAGE -> COMMAND Run(flowcopter/RouteCommands)
+
+# Route WebSocket messages to commands executed by the AR.Drone
+Server MESSAGE -> COMMAND Run(flowcopter/RouteCommands)
+
+# Listen to the drone and send its telemetry back via WebSockets
+Server CONNECTION -> CONNECTION Send(websocket/SendMessage)
+Run CLIENT -> CLIENT NavData(ardrone/ListenNavData)
+NavData TELEMETRY -> IN ToJson(strings/Jsonify) OUT -> STRING Send
