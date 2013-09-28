@@ -1,8 +1,11 @@
 # Listen to HTTP and WebSocket traffic
-'8000' -> PORT Server(flowcopter/SocketServer)
+'8002' -> PORT Server(flowcopter/SocketServer)
+Server ERROR -> IN ShowError(core/Output)
 
 # Route WebSocket messages to commands executed by the AR.Drone
 Server MESSAGE -> COMMAND Run(flowcopter/RouteCommands)
+Run COMMAND -> IN GetCommand(groups/ReadGroup) GROUP -> IN Show(core/Output)
+GetCommand OUT -> IN Show
 
 # Listen to the drone and send its telemetry back via WebSockets
 Server CONNECTION -> CONNECTION Send(websocket/SendMessage)

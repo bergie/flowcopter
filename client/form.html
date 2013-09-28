@@ -35,7 +35,7 @@
   <script type="application/fbp">
 # WebSocket communications
 'flowcopter' -> PROTOCOL Connect(websocket/Connect)
-'ws://localhost:8000' -> URL Connect()
+'ws://localhost:8002' -> URL Connect()
 Connect() CONNECTION -> IN SplitConnection(core/Split)
 SplitConnection OUT -> CONNECTION Send(websocket/SendMessage)
 Connect() ERROR -> IN Show(core/Output)

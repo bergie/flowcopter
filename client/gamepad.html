@@ -7,7 +7,7 @@
 ###
 # WebSocket connection
 'flowcopter' -> PROTOCOL Connect(websocket/Connect)
-'ws://localhost:8000' -> URL Connect()
+'ws://localhost:8002' -> URL Connect()
 Connect() CONNECTION -> CONNECTION Send(websocket/SendMessage)
 Connect() ERROR -> IN Show(core/Output)
 
