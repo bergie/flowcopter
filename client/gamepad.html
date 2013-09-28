@@ -15,6 +15,7 @@ Connect() ERROR -> IN Show(core/Output)
 # MainData Graph
 '0' -> STRING SendString(strings/SendString)
 '20' -> INTERVAL RunInterval(core/RunInterval)
+'' -> START RunInterval
 'axes' -> KEY ReadAxes(objects/ExtractProperty)
 'buttons' -> KEY ReadButtons(objects/ExtractProperty)
 RunInterval() OUT -> IN SendString(strings/SendString)
