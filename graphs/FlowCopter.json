@@ -48,7 +48,7 @@
             "component": "core/Output",
             "metadata": {
                 "x": -15,
-                "y": -45,
+                "y": -37,
                 "label": "Show"
             }
         },
