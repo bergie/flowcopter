@@ -71,8 +71,8 @@
         "ToJson": {
             "component": "strings/Jsonify",
             "metadata": {
-                "x": 69,
-                "y": 84,
+                "x": -13,
+                "y": 87,
                 "label": "ToJson"
             }
         }
