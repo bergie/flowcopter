@@ -1,4 +1,4 @@
-inoflo = require "noflo"
+noflo = require "noflo"
 
 class WireCommand extends noflo.Component
   description: "create a wire command for the flowcopter"
