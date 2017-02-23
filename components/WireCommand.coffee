@@ -1,5 +1,7 @@
 noflo = require "noflo"
 
+# @runtime noflo-browser
+
 class WireCommand extends noflo.Component
   description: "create a wire command for the flowcopter"
   

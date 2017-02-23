@@ -1,6 +1,8 @@
 
 noflo = require "noflo"
 
+# @runtime noflo-browser
+
 class GamepadAxis extends noflo.Component
   description: "Send data when a axis is changed"
   

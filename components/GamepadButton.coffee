@@ -1,6 +1,8 @@
 
 noflo = require "noflo"
 
+# @runtime noflo-browser
+
 class GamepadButton extends noflo.Component
   description: "Send data when a button is pressed"
   
