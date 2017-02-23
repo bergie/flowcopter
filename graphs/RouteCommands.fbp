@@ -2,6 +2,8 @@ EXPORT=DISC.IN:COMMAND
 EXPORT=REPEATDRONE.OUT:CLIENT
 EXPORT=REPEATCOMMAND.OUT:COMMAND
 
+# @runtime noflo-nodejs
+
 Disc(core/DisconnectAfterPacket) OUT -> IN SplitCommands(objects/SplitObject)
 SplitCommands(objects/SplitObject) OUT -> IN SplitIndividualCommand(core/Split)
 SplitIndividualCommand OUT -> IN CommandRouter(routers/GroupRouter)
