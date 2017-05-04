@@ -1,5 +1,7 @@
 # flowcopter
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/bergie/flowcopter.svg)](https://greenkeeper.io/)
+
 NoFlo and NodeCopter examples
 
 ## Installing
