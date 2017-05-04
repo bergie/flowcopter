@@ -18,16 +18,16 @@
     }
   },
   "dependencies": {
-    "noflo": "~0.7.9",
+    "noflo": "~0.8.3",
     "noflo-ardrone": "~0.2.0",
-    "noflo-core": "^0.2.3",
+    "noflo-core": "^0.4.0",
     "noflo-dom": "^0.1.1",
     "noflo-groups": "~0.1.2",
     "noflo-interaction": "^0.1.1",
-    "noflo-math": "0.0.9",
-    "noflo-objects": "^0.2.0",
+    "noflo-math": "0.1.1",
+    "noflo-objects": "^0.3.0",
     "noflo-routers": "~0.2.2",
-    "noflo-strings": "^0.2.0",
+    "noflo-strings": "^0.3.0",
     "noflo-webserver": "~0.0.6",
     "noflo-websocket": "^0.1.5"
   },
@@ -38,10 +38,10 @@
     "grunt": "~1.0.1",
     "grunt-coffeelint": "~0.0.16",
     "grunt-contrib-coffee": "~1.0.0",
-    "grunt-contrib-uglify": "~2.1.0",
+    "grunt-contrib-uglify": "~2.3.0",
     "grunt-noflo-browser": "^1.1.1",
     "json-loader": "^0.5.4",
-    "mocha": "~3.2.0"
+    "mocha": "~3.3.0"
   },
   "scripts": {
     "test": "grunt test"
