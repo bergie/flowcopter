@@ -1,6 +1,4 @@
-# flowcopter
-
-[![Greenkeeper badge](https://badges.greenkeeper.io/bergie/flowcopter.svg)](https://greenkeeper.io/)
+# flowcopter [![Build Status](https://travis-ci.org/bergie/flowcopter.svg?branch=master)](https://travis-ci.org/bergie/flowcopter) [![Greenkeeper badge](https://badges.greenkeeper.io/bergie/flowcopter.svg)](https://greenkeeper.io/)
 
 NoFlo and NodeCopter examples
 
