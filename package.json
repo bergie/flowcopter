@@ -21,7 +21,7 @@
     "noflo": "~0.8.3",
     "noflo-ardrone": "~0.2.0",
     "noflo-core": "^0.4.0",
-    "noflo-dom": "^0.1.1",
+    "noflo-dom": "^0.2.0",
     "noflo-groups": "~0.1.2",
     "noflo-interaction": "^0.2.0",
     "noflo-math": "0.1.1",
