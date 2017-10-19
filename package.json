@@ -26,7 +26,7 @@
     "noflo-interaction": "^0.2.0",
     "noflo-math": "0.1.1",
     "noflo-objects": "^0.3.0",
-    "noflo-routers": "~0.2.2",
+    "noflo-routers": "~0.3.0",
     "noflo-strings": "^0.3.0",
     "noflo-webserver": "~0.0.6",
     "noflo-websocket": "^0.1.5"
