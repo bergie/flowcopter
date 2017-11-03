@@ -29,7 +29,7 @@
     "noflo-routers": "~0.3.0",
     "noflo-strings": "^0.3.0",
     "noflo-webserver": "~0.0.6",
-    "noflo-websocket": "^0.1.5"
+    "noflo-websocket": "^0.3.0"
   },
   "devDependencies": {
     "chai": "~4.1.0",
